@@ -1,16 +1,15 @@
-# GreenAI
-# 🌞 Green AI: Solar Anomaly Detection System
+#  Green AI: Solar Anomaly Detection System
 
-## 📖 Project Overview
+##  Project Overview
 This project aligns with **Green AI** principles by focusing on **Energy Production** and **Efficiency**. Instead of standard power forecasting, we implement an **Anomaly Detection** model for photovoltaic (PV) systems using the Kaggle *Solar Power Generation Dataset*.
 
 By training a Machine Learning model to simulate the "ideal" power output based on weather conditions and comparing it to actual generation, we identify inefficiencies (faults, soiling, or shading) to reduce energy waste.
 
 ---
 
-## 🛠️ Implementation Roadmap
+##  Implementation Roadmap
 
-### Phase 1: Data Preparation 🧹
+### Phase 1: Data Preparation 
 **Goal:** Merge and clean the raw data for modeling.
 1.  **Data Ingestion:** Load the `Generation_Data.csv` and `Weather_Sensor_Data.csv`.
 2.  **Preprocessing:** Convert `DATE_TIME` columns to datetime objects for proper synchronization.
@@ -18,7 +17,7 @@ By training a Machine Learning model to simulate the "ideal" power output based 
     * *Result:* A unified dataset containing Irradiation, Temperature, and Power Output for specific inverters.
 4.  **Filtering:** Isolate data for a single inverter (using `SOURCE_KEY`) or aggregate data to simplify the initial analysis.
 
-### Phase 2: Baseline Modeling 🤖
+### Phase 2: Baseline Modeling 
 **Goal:** Train the AI to understand "normal" behavior.
 1.  **Feature Selection:**
     * **Inputs (X):** `IRRADIATION` (Primary), `AMBIENT_TEMPERATURE`, `MODULE_TEMPERATURE`.
@@ -26,7 +25,7 @@ By training a Machine Learning model to simulate the "ideal" power output based 
 2.  **Model Selection:** Use a Regression model (e.g., **Random Forest Regressor** or **XGBoost**) capable of capturing non-linear relationships.
 3.  **Training:** Split data into Train/Test sets (e.g., 80/20) and train the model to map Weather $\rightarrow$ Ideal Power.
 
-### Phase 3: Residual Analysis (The Core Logic) 🔍
+### Phase 3: Residual Analysis (The Core Logic) 
 **Goal:** Detect anomalies by calculating the deviation from the ideal.
 1.  **Prediction:** Generate predictions (`Pred_Power`) using the test set.
 2.  **Residual Calculation:** Compute the difference between the AI's prediction and reality.
@@ -34,14 +33,14 @@ By training a Machine Learning model to simulate the "ideal" power output based 
 3.  **Thresholding:** Define an "Anomaly":
     * If $Residual > Threshold$ (e.g., 20% deviation), flag the data point as a **Fault**.
 
-### Phase 4: Visualization 📊
+### Phase 4: Visualization 
 **Goal:** Visual proof of the model's performance.
 1.  **Time-Series Plot:** Plot `Actual Power` (Orange) vs. `Predicted Power` (Blue) over time.
 2.  **Highlight Anomalies:** Overlay Red points where the Residual exceeds the threshold to visualize detected faults.
 
 ---
 
-## 💻 Tech Stack
+##  Tech Stack
 * **Language:** Python 3.x
 * **Data Manipulation:** `pandas`, `numpy`
 * **Visualization:** `matplotlib`, `seaborn`
@@ -49,7 +48,7 @@ By training a Machine Learning model to simulate the "ideal" power output based 
 
 ---
 
-## 🚀 Quick Start (Logic Demo)
+## Quick Start (Logic Demo)
 
 ```python
 import pandas as pd
