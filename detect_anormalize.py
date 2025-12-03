@@ -31,6 +31,10 @@ print(f"正在分析逆变器: {target_inverter}")
 
 # 筛选出该逆变器的数据
 data = df[df['SOURCE_KEY_x'] == target_inverter].copy()
+print("⚠️ 正在模拟人为故障 (Simulating Faults)...")
+# 这里的 .iloc[100:120] 对应的是时间轴上的一段
+# 我们把实际发电量 (AC_POWER) 强行乘以 0.1 (相当于损耗了 90% 的电)
+data.iloc[100:120, data.columns.get_loc('AC_POWER')] = data.iloc[100:120, data.columns.get_loc('AC_POWER')] * 0.1
 
 
 # ==========================================
