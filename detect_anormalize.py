@@ -12,7 +12,7 @@ df = pd.read_csv('./Datasets/cleaned_solar_data.csv')
 df['DATE_TIME'] = pd.to_datetime(df['DATE_TIME'])  
 
 # Path to pre-trained Random Forest model
-model_path = './Model/solar_model_rf.pkl'
+model_path = './Model/solar_model_lr.pkl'#chose which model to use
 
 # Check if model exists, load or exit with error
 if os.path.exists(model_path):
@@ -69,14 +69,14 @@ anomalies = plot_data[plot_data['Anomalies']]
 plt.scatter(anomalies['DATE_TIME'], anomalies['AC_POWER'], 
             color='red', label='Anomaly Detected', zorder=5, s=50, edgecolors='black')
 
-plt.title(f'Solar Fault Detection (Random Forest) - Inverter: {target_inverter}')
+plt.title(f'Solar Fault Detection (linear regression) - Inverter: {target_inverter}')#chose which model to use
 plt.xlabel('Time')
 plt.ylabel('AC Power (kW)')
 plt.legend()
 plt.grid(True, alpha=0.3)
 
 # Save plot locally
-plt.savefig('rf_anomaly_result.png')
+plt.savefig('lr_anomaly_result.png')
 print("Plot saved as 'rf_anomaly_result.png' - check it out!")
 
 plt.show()
