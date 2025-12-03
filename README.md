@@ -22,7 +22,7 @@ By training a Machine Learning model to simulate the "ideal" power output based 
 1.  **Feature Selection:**
     * **Inputs (X):** `IRRADIATION` (Primary), `AMBIENT_TEMPERATURE`, `MODULE_TEMPERATURE`.
     * **Target (Y):** `AC_POWER`.
-2.  **Model Selection:** Use a Regression model (e.g., **Random Forest Regressor** or **XGBoost**) capable of capturing non-linear relationships.
+2.  **Model Selection:** Use a Regression model (e.g., **Random Forest Regressor** or **Linear regression**) capable of capturing non-linear relationships.
 3.  **Training:** Split data into Train/Test sets (e.g., 80/20) and train the model to map Weather $\rightarrow$ Ideal Power.
 
 ### Phase 3: Residual Analysis (The Core Logic) 
